@@ -13,6 +13,7 @@ from rest_framework.test import APIClient
 
 # ==================== ФИКСТУРЫ ПОЛЬЗОВАТЕЛЕЙ ====================
 
+
 @pytest.fixture
 def user1_valid():
     """Создание 1-го валидного пользователя."""
