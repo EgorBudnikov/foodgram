@@ -10,10 +10,9 @@ import base64
 from django.contrib.auth import authenticate
 from django.core.files.base import ContentFile
 from django.shortcuts import get_object_or_404
+from recipe.serializers import RecipeShortSerializer
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
-
-from recipe.serializers import RecipeShortSerializer
 from users.models import User
 
 

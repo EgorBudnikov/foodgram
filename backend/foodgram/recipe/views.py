@@ -8,30 +8,19 @@
 - скачивания списка покупок
 """
 
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect
+from django_filters.rest_framework import DjangoFilterBackend
+from recipe.models import (Favorite, Ingredient, Recipe, RecipeShortLink,
+                           ShoppingCart, Tag)
+from recipe.permissions import UserRecipePermissions
+from recipe.serializers import (IngredientSerializer, RecipeDetailSerializer,
+                                RecipeSerializer, RecipeShortSerializer,
+                                TagsSerializer)
+from recipe.utils import generate_short_code
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django_filters.rest_framework import DjangoFilterBackend
-from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect
-
-from recipe.models import (
-    Favorite,
-    Ingredient,
-    Recipe,
-    RecipeShortLink,
-    ShoppingCart,
-    Tag,
-)
-from recipe.permissions import UserRecipePermissions
-from recipe.serializers import (
-    IngredientSerializer,
-    RecipeDetailSerializer,
-    RecipeSerializer,
-    RecipeShortSerializer,
-    TagsSerializer,
-)
-from recipe.utils import generate_short_code
 
 
 class TagsViewSet(viewsets.ReadOnlyModelViewSet):

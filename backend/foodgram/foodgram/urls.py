@@ -1,20 +1,11 @@
 """Урлы и эндпоинты приложения."""
 from django.contrib import admin
 from django.urls import include, path
+from recipe.views import (IngredientViewSet, RecipeViewSet, TagsViewSet,
+                          redirect_to_recipe)
 from rest_framework import routers
-
-from recipe.views import (
-    IngredientViewSet,
-    RecipeViewSet,
-    TagsViewSet,
-    redirect_to_recipe,
-)
-from users.views import (
-    UserViewSet,
-    change_password,
-    token_delete,
-    token_obtain,
-)
+from users.views import (UserViewSet, change_password, token_delete,
+                         token_obtain)
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet, basename='users')

@@ -7,11 +7,9 @@
 """
 
 import pytest
-from rest_framework.test import APIClient
+from recipe.models import Ingredient, Tag
 from rest_framework.authtoken.models import Token
-
-from recipe.models import Tag, Ingredient
-
+from rest_framework.test import APIClient
 
 # ==================== ФИКСТУРЫ ПОЛЬЗОВАТЕЛЕЙ ====================
 

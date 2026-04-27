@@ -10,16 +10,9 @@
 import base64
 
 from django.core.files.base import ContentFile
+from recipe.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
+                           ShoppingCart, Tag)
 from rest_framework import serializers
-
-from recipe.models import (
-    Favorite,
-    Ingredient,
-    Recipe,
-    RecipeIngredient,
-    ShoppingCart,
-    Tag,
-)
 
 
 class TagsSerializer(serializers.ModelSerializer):
