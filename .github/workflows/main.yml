@@ -48,5 +48,5 @@ jobs:
           DB_HOST: localhost
           DB_PORT: 5432
         run: |
-          cd backend/
+          cd backend/foodgram
           pytest
