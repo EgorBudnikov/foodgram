@@ -34,7 +34,7 @@ services:
       image: ${USERNAME_DOC}/foodgram_frontend
       env_file: 
         - .env
-      command: cp -r /app/build/. /static/
+      command: sh -c "cp -r /app/build/* /static/"
       volumes:
         - static_volume:/static
 
