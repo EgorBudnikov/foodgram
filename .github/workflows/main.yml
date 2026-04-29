@@ -41,6 +41,7 @@ jobs:
           
       - name: Run tests
         env:
+          ALLOWED_HOSTS: localhost
           DB_NAME: django_db
           POSTGRES_USER: django_user
           POSTGRES_PASSWORD: <PASSWORD>
