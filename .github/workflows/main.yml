@@ -42,7 +42,7 @@ jobs:
       - name: Run tests
         env:
           DJANGO_ALLOWED_HOSTS: localhost
-          DJANGO_SECRET_KEY: 'django-insecure-test-key-for-ci-12345'
+          DJANGO_SECRET_KEY: "django-insecure-test-key-for-ci-12345"
           DATABASE_NAME: django_db
           DATABASE_USERNAME: django_user
           DATABASE_PASSWORD: <PASSWORD>
@@ -131,5 +131,37 @@ jobs:
           context: ./gateway/
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_gateway:latest
+  
+  deploy:
+    runs-on: ubuntu-latest
+    needs: 
+      - build_and_push_to_docker_hub
+      - build_frontend_and_push_to_docker_hub
+      - build_gateway_and_push_to_docker_hub
+    steps:
+      - name: Checkout to repo
+        uses: actions/checkout@v4
+      - name: Copy docker-compose.yml via ssh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "docker-compose.production.yml"
+          target: "foodgram"
+      - name: Command to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: $ {{ secrets.SSH_KEY }}
+          script:
+            cd foodgram
+            sudo docker compose -f docker-compose.production.yml pull
+            sudo docker compose -f docker-compose.production.yml down
+            sudo docker compose -f docker-compose.production.yml up -d
+            
+
+
 
       
