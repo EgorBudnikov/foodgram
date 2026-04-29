@@ -160,7 +160,9 @@ jobs:
             sudo docker-compose -f docker-compose.production.yml down
             sudo docker-compose -f docker-compose.production.yml pull
             sudo docker-compose -f docker-compose.production.yml up -d
+            sleep 20
             sudo docker exec foodgram_nginx_1 cp -r /staticfiles/static/* /staticfiles/
+            sudo docker exec foodgram_nginx_1 nginx -s reload
             
 
 
