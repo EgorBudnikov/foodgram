@@ -41,7 +41,7 @@ jobs:
           
       - name: Run tests
         env:
-          DB_ENGINE: django.db.backends.postgresql
+          DJANGO_SETTINGS_MODULE: foodgram.settings
           DB_NAME: django_db
           POSTGRES_USER: django_user
           POSTGRES_PASSWORD: <PASSWORD>
