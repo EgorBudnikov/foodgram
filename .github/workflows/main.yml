@@ -42,7 +42,7 @@ jobs:
       - name: Run tests
         env:
           DJANGO_ALLOWED_HOSTS: localhost
-          SECRET_KEY: 'django-insecure-test-key-for-ci-12345'
+          DJANGO_SECRET_KEY: 'django-insecure-test-key-for-ci-12345'
           DATABASE_NAME: django_db
           DATABASE_USERNAME: django_user
           DATABASE_PASSWORD: <PASSWORD>
