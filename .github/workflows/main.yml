@@ -42,11 +42,11 @@ jobs:
       - name: Run tests
         env:
           DJANGO_ALLOWED_HOSTS: localhost
-          DB_NAME: django_db
-          POSTGRES_USER: django_user
-          POSTGRES_PASSWORD: <PASSWORD>
-          DB_HOST: localhost
-          DB_PORT: 5432
+          DATABASE_NAME: django_db
+          DATABASE_USERNAME: django_user
+          DATABASE_PASSWORD: <PASSWORD>
+          DATABASE_HOST: localhost
+          DATABASE_PORT: 5432
         run: |
           cd backend/foodgram
           pytest
